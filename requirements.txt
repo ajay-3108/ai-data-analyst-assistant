@@ -5,5 +5,5 @@ plotly
 matplotlib
 seaborn
 python-dotenv
-google-genai
+google-generativeai
 openpyxl
