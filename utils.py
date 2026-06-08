@@ -1,10 +1,10 @@
 import os
 from dotenv import load_dotenv
-from google import genai
+import os
+import google.generativeai as genai
 
-load_dotenv()
-
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 def generate_insights(df):
 
@@ -181,9 +181,5 @@ QUESTION:
 Give a clear answer with reasoning.
 """
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt
-    )
-
+    response = model.generate_content(prompt)
     return response.text
